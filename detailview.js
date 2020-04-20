@@ -13,6 +13,26 @@ export class DetailView {
           <legend>Birthday</legend>
             <input id="inputBirthday" type="date"></input>
         </fieldset>
+        <fieldset>
+          <legend>Tshirtgröße</legend>
+            <label>
+              S
+              <input type='radio' name='shirtSize' value='S'>
+            </label>
+            <label>
+              M
+              <input type='radio' name='shirtSize' value='M'>
+            </label>
+            <label>
+              L
+              <input type='radio' name='shirtSize' value='L'>
+            </label>
+            <label>
+              XL
+              <input type='radio' name='shirtSize' value='XL'>
+            </label>
+
+        </fieldset>
         <button id="buttonSave">Save</button>
         <button id="buttonCancel">Cancel</button>
         `;
@@ -22,6 +42,7 @@ export class DetailView {
     // Controls
     this.inputName = document.getElementById('inputName');
     this.inputBirthday = document.getElementById('inputBirthday');
+    this.shirtSize = document.getElementsByName('shirtSize'); 
 
     // Events
     this._registerEvents();
@@ -55,5 +76,23 @@ export class DetailView {
 
   setBirthday(birthday) {
     this.inputBirthday.value = birthday;
+  }
+
+  setShirtSize(size){
+    this.shirtSize.forEach(element => {
+      if(element.value == size){
+        element.checked = true;
+      }
+    });
+  }
+
+  getShirtSize(){
+    let returnValue;
+    this.shirtSize.forEach(element => {      
+      if(element.checked){
+        returnValue = element.value;
+      }
+    });
+    return returnValue;
   }
 }
