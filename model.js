@@ -1,17 +1,16 @@
 import { Person } from './person.js';
+import { Dao } from './dao.js';
 
 export class Model {
   constructor() {
-    this.personList = [
-      { name: 'Anna Arm', birthday: '2001-12-24' },
-      { name: 'Berta Bein', birthday: '1993-07-12' },
-      { name: 'Carla Copf', birthday: '1980-03-07' }
-    ];
+    this.dao = new Dao();
+    this.personList = this.dao.read();
   }
 
   // CREATE
   addPerson(person) {
     this.personList.push(person);
+    this.dao.write(this.personList);
   }
 
   // READ
@@ -26,10 +25,12 @@ export class Model {
   // UPDATE
   updatePerson(index, newPerson) {
     this.personList[index] = newPerson;
+    this.dao.write(this.personList);
   }
 
   // DELETE
   deletePerson(index) {
     this.personList.splice(index, 1);
+    this.dao.write(this.personList);
   }
 }
