@@ -10,7 +10,7 @@ export class Model {
   // CREATE
   addPerson(person) {
     this.personList.push(person);
-    this.dao.write(this.personList);
+    this.safe();
   }
 
   // READ
@@ -25,12 +25,16 @@ export class Model {
   // UPDATE
   updatePerson(index, newPerson) {
     this.personList[index] = newPerson;
-    this.dao.write(this.personList);
+    this.safe();
   }
 
   // DELETE
   deletePerson(index) {
     this.personList.splice(index, 1);
+    this.safe();
+  }
+
+  safe() {
     this.dao.write(this.personList);
   }
 }
