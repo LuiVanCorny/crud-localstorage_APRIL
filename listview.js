@@ -16,12 +16,18 @@ export class ListView {
       htmlTable += htmlTr;
     }
 
+    let htmlStatisticTable = '<tr><th>S</th><th>M</th><th>L</th><th>XL</th></tr>';
+    htmlStatisticTable += "<tr id='counterRow'><td id='SCount'></td><td id='MCount'></td><td id='LCount'></td><td id='XLCount'></td></tr>"
+
     const html = `
         <h2>ListView</h2>
         <table>
             ${htmlTable}
         </table>
         <button id="buttonNew">New</button>
+        <table>
+            ${htmlStatisticTable}
+        </table>
         `;
     this.app = document.getElementById('app');
     this.app.innerHTML = html;
@@ -49,5 +55,21 @@ export class ListView {
     buttonNew.addEventListener('click', () => {
       this.presenter.buttonNewClicked();
     });
+  }
+
+  setSCounter(counter){
+    document.getElementById('SCount').innerHTML = counter;
+  }
+
+  setMCounter(counter){
+    document.getElementById('MCount').innerHTML = counter;
+  }
+
+  setLCounter(counter){
+    document.getElementById('LCount').innerHTML = counter;
+  }
+
+  setXLCounter(counter){
+    document.getElementById('XLCount').innerHTML = counter;
   }
 }

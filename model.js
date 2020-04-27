@@ -22,6 +22,46 @@ export class Model {
     return this.personList[index];
   }
 
+  getSCount(){
+    let Scounter = 0;
+    this.personList.forEach(person => {
+        if(person.shirtSize === "S"){
+          Scounter++;
+        }
+    });
+    return Scounter;
+  }
+
+  getMCount(){
+    let Mcounter = 0;
+    this.personList.forEach(person => {
+        if(person.shirtSize === "M"){
+          Mcounter++;
+        }
+    });
+    return Mcounter;
+  }
+
+  getLCount(){
+    let Lcounter = 0;
+    this.personList.forEach(person => {
+        if(person.shirtSize === "L"){
+          Lcounter++;
+        }
+    });
+    return Lcounter;
+  }
+
+  getXLCount(){
+    let XLcounter = 0;
+    this.personList.forEach(person => {
+        if(person.shirtSize === "XL"){
+          XLcounter++;
+        }
+    });
+    return XLcounter;
+  }
+
   // UPDATE
   updatePerson(index, newPerson) {
     this.personList[index] = newPerson;

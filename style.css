@@ -33,3 +33,7 @@ input[type='text'] {
 table {
   width: 100%;
 }
+
+#counterRow td{
+  text-align: center;
+}

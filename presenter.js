@@ -13,6 +13,10 @@ export class Presenter {
   _showListView() {
     const personList = this.model.getAllPersons();
     this.view = new ListView(this, personList);
+    this.view.setSCounter(this.model.getSCount());
+    this.view.setMCounter(this.model.getMCount());
+    this.view.setLCounter(this.model.getLCount());
+    this.view.setXLCounter(this.model.getXLCount());
   }
 
   //------ from ListView ----------
